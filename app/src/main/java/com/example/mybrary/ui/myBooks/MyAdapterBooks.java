@@ -1,4 +1,4 @@
-package com.example.mybrary.ui.nearby;
+package com.example.mybrary.ui.myBooks;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mybrary.R;
 
+
 import java.util.List;
 
-public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private List<Person> person;
+public class MyAdapterBooks  extends RecyclerView.Adapter<MyAdapterBooks.MyViewHolder> {
 
+    List<Books> booksList;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -23,31 +24,36 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // each data item is just a string in this case
 
         CardView cardView;
-        TextView name;
-        TextView surname;
+        TextView title;
+        TextView autor;
         Button delete;
         public MyViewHolder(View v) {
             super(v);
             cardView =  v.findViewById(R.id.cardview);
-            name =  v.findViewById(R.id.wish_title);
-            surname =  v.findViewById(R.id.wish_autor);
+            title =  v.findViewById(R.id.wish_title);
+            autor =  v.findViewById(R.id.wish_autor);
             delete  = v.findViewById(R.id.btn_deleete);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Person> person) {
-        this.person = person;
+
+
+
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public MyAdapterBooks(List<Books> books){
+        this.booksList = books;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public MyAdapterBooks.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(v);
+            MyViewHolder vh = new MyViewHolder(v);
+
         return vh;
     }
 
@@ -56,8 +62,9 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.name.setText(person.get(position).name);
-        holder.surname.setText(person.get(position).surname);
+
+        holder.title.setText(booksList.get(position).title);
+        holder.autor.setText(booksList.get(position).autor);
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +77,6 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return person.size();
+        return booksList.size();
     }
 }

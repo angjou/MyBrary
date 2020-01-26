@@ -13,13 +13,18 @@
 
     <fragment
         android:id="@+id/navigation_nearby"
-        android:name="com.example.mybrary.ui.myWishes.MyWishesFragment"
+        android:name="com.example.mybrary.ui.nearby.NearbyFragment"
         android:label="@string/title_nearby"
-        tools:layout="@layout/fragment_nearby" />
+        tools:layout="@layout/fragment_list" />
 
     <fragment
         android:id="@+id/navigation_mywishes"
-        android:name="com.example.mybrary.ui.nearby.NearbyFragment"
+        android:name="com.example.mybrary.ui.myWishes.MyWishesFragment"
         android:label="@string/title_mywishes"
-        tools:layout="@layout/fragment_mywishes" />
+        tools:layout="@layout/fragment_list" />
+    <fragment
+        android:id="@+id/navigation_myBooks"
+        android:name="com.example.mybrary.ui.myBooks.MyBooksFragment"
+        android:label="@string/title_myBooks"
+        tools:layout="@layout/fragment_list" />
 </navigation>
